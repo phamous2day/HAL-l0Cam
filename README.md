@@ -51,9 +51,9 @@ app.config(function($compileProvider){
 });
 ```
 
->"Retrieves or overrides the default regular expression that is used for whitelisting of safe urls during img[src] >sanitization.
+>"Retrieves or overrides the default regular expression that is used for whitelisting of safe urls during img[src] sanitization.
 >The sanitization is a security measure aimed at prevent XSS attacks via html links.
 
->Any url about to be assigned to img[src] via data-binding is first normalized and turned into an absolute url. Afterwards, >the url is matched against the imgSrcSanitizationWhitelist regular expression. If a match is found, the original url is >written into the dom. Otherwise, the absolute url is prefixed with 'unsafe:' string and only then is it written into the DOM.
+>Any url about to be assigned to img[src] via data-binding is first normalized and turned into an absolute url. Afterwards, the url is matched against the imgSrcSanitizationWhitelist regular expression. If a match is found, the original url is written into the dom. Otherwise, the absolute url is prefixed with 'unsafe:' string and only then is it written into the DOM.
 
 For more information on [Base-64 encoding images in Node.js visit](http://nodeexamples.com/2012/09/26/base-64-encoding-images-in-node-js/)
