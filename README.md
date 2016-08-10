@@ -1,4 +1,5 @@
-# ![cam icon](halCam.png)HAL-loCam 
+# ![cam icon](halCam.png)HAL-l0Cam
+
 
 ##Obstacles:
 There were a lot of moving parts to this project. I figure the best approach is to take it one milestone at a time.
@@ -57,3 +58,57 @@ app.config(function($compileProvider){
 >Any url about to be assigned to img[src] via data-binding is first normalized and turned into an absolute url. Afterwards, the url is matched against the imgSrcSanitizationWhitelist regular expression. If a match is found, the original url is written into the dom. Otherwise, the absolute url is prefixed with 'unsafe:' string and only then is it written into the DOM.
 
 For more information on [Base-64 encoding images in Node.js visit](http://nodeexamples.com/2012/09/26/base-64-encoding-images-in-node-js/)
+
+
+###3a. Using AngularJS filter to display images based on timestamp
+Not having much practice with Date filters (especially since I don't want it to pull everything that comes with it, but rather, a shortened "timestamp" filter which I would have to make), I found a sampling of [how it looks here](http://plnkr.co/edit/vxIewUDGDjiz80W1Itag?p=preview):
+
+Here's what they have:
+```javascript
+function MainController($scope) {
+
+  $scope.year = 2015;
+  $scope.combinations = [
+    { name : 'a', date: new Date(2015, 3, 1) },
+    { name : 'b', date: new Date(2015, 3, 1) },
+    { name : 'c', date: new Date(2014, 3, 1) },
+    ];
+
+  $scope.ofYear = function(year) {
+      return function(c) {
+        return c.date.getFullYear() === year;
+      }
+  }
+  
+  $scope.next = function() {
+    $scope.year++;  
+  }
+  
+  $scope.prev = function() {
+    $scope.year--;  
+  }
+}
+```
+In the above example, they inserted a hard-coded year to be 2015, their "combinations" is set to a static array of values,
+
+**Here's what I changed it to:**
+```javascript
+function MainController($scope, $http) {
+  $http.get('/images')
+  .success(function(data,status){
+    $scope.Images = data;
+
+    $scope.ofTimestamp = function(image) {
+        return image.timestamp >= $scope.timestamp;
+    };
+    $scope.next = function() {
+      $scope.timestamp++;
+    };
+    $scope.prev = function() {
+      $scope.timestamp--;
+    };
+  });
+}
+```
+I'm going to the timestamp based on user input. I'm not using a static array of predefined values to be looped through, since I already hav that made with the $scope.Images which stores a buffer of images I stored in my database.
+Sample timestamp: 2016-08-09T18:02:29.319Z
