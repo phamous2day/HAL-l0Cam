@@ -112,3 +112,15 @@ function MainController($scope, $http) {
 ```
 I'm going to the timestamp based on user input. I'm not using a static array of predefined values to be looped through, since I already hav that made with the $scope.Images which stores a buffer of images I stored in my database.
 Sample timestamp: 2016-08-09T18:02:29.319Z
+
+
+
+Note to self: What mongodb query looks like to get between dates -
+```js
+db.getCollection('images').find({
+       "timestamp": {
+        $gte: ISODate("2016-08-09 18:02:04.359Z"),
+        $lt: ISODate("2016-08-09 18:02:24.311Z")
+    }
+})
+```
