@@ -1,4 +1,4 @@
-# HAL-loCam [logo pic](halCam.png)
+# HAL-loCam ![cam icon](halCam.png)
 
 ##Obstacles:
 There were a lot of moving parts to this project. I figure the best approach is to take it one milestone at a time.
@@ -39,7 +39,9 @@ app.get('/images', function(request, response, next) {
 ```
 
 IMPORTANT: when working with base64 conversion, you'll encounter errors in the browser console that mentions how "unsafe" the urls are. To sanitize the image links, it'll look like this:
->imgSrcSanitizationWhitelist([regexp]); ((from https://docs.angularjs.org/api/ng/provider/$compileProvider))
+>imgSrcSanitizationWhitelist([regexp]); 
+
+*from https://docs.angularjs.org/api/ng/provider/$compileProvider
 
 With the way my code was written, I had to chop some things out to make it less specific. I made the parameter below match up to exclusively the image instead of factoring other possible parameters like links.
 **Frontend: AngularJS**
