@@ -1,4 +1,4 @@
-# HAL-loCam ![cam icon](halCam.png)
+# ![cam icon](halCam.png)HAL-loCam 
 
 ##Obstacles:
 There were a lot of moving parts to this project. I figure the best approach is to take it one milestone at a time.
