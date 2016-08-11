@@ -112,9 +112,6 @@ function MainController($scope, $http) {
 ```
 I'm going to the timestamp based on user input. I'm not using a static array of predefined values to be looped through, since I already hav that made with the $scope.Images which stores a buffer of images I stored in my database.
 
-
-
-
 Note to self: What mongodb query looks like to get between dates -
 ```js
 db.getCollection('images').find({
@@ -125,7 +122,51 @@ db.getCollection('images').find({
 })
 ```
 
+###3b. Filter images by timestamp: passing front end data to backend.
+Components include: build a form to take in start and end time, apply "ng-model" to both times to get the values independently, then $scope the values to the frontend js, then pass those values to the backend server.js
 
+```html
+<body ng-app="app" ng-controller="MainController">
+  <form>
+    Start: <input ng-model="starttime" type="text"  placeholder="Starting point"><br>
+    End: <input ng-model="endtime" type="text" placeholder="ending point"><br>
+    <button ng-click="getImages()">Get Images</button>
+    <ul>
+      <li ng-repeat="image in Images"> test{{image.timestamp}} <br></br>
+        <img ng-src="data:images/PNG;base64,{{image.data}}"></li>
+      </ul>
+    </form>
+```
+
+Frontend JS
+```js
+$scope.getImages = function() {
+    var parameterTimes =
+    {
+      "$gte": $scope.starttime,
+      "$lte": $scope.endtime,
+    };
+
+    $http.post('/images', parameterTimes)
+    .success(function(data,status){
+      $scope.Images = data;
+    })
+    .error(function(status){
+      console.log("status is: " + status);
+    });
+```
+Backend to mongo
+```js
+app.post('/images', function(request, response, next) {
+
+  Image.find({
+    "timestamp": {
+      // take timestamp from request.body
+      $gte: request.body.$gte,
+      $lte: request.body.$lte
+    }})
+    .then(function(images) {
+```
 
 Sample timestamps to try:
 2016-08-09 17:54:51.857Z
