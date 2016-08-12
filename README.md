@@ -179,3 +179,40 @@ Sample timestamps to try:
 2016-08-09 18:02:24.311Z
 
 
+###3b. Using a "datepicker" to make time ranges more elegant
+I wanted to use a fancy date time picker to specify the range since it's nearly impossible for users to input an exact timestamp like this format (from the top of their head): 2016-08-09 18:02:24.311Z
+
+After scouring the internet, seems like the general direction was to use "angular UI" ...but that's mostly for display and it's tough to $scope the input time from front end to backend. Then, I found this: [https://codepen.io/Sinetheta/pen/Ftjwi](https://codepen.io/Sinetheta/pen/Ftjwi) which looks really and had everything I needed ... but turns out it used jQuery, and I didn't want to get my code messier with assorted languages.
+
+In the end, I found a "datetime" drop down from W3 school, which looks like this:
+
+```html
+
+<form action="action_page.php">
+  Birthday (date and time):
+  <input type="datetime" name="bdaytime">
+  <input type="submit">
+</form>
+```
+
+The issue here is that it uses that specific action_page.php, which I don't want to use. It's a simple fix, instead of telling it that action, I made the form do a: **form methods = "POST" ** 
+
+Final Date/Time Range code
+```html
+<body ng-app="app" ng-controller="MainController">
+  <form methods= "POST">
+    Starting (date and time):
+    <input ng-model="starttime"type="datetime-local" name="startime">
+
+    Ending (date and time):
+    <input ng-model="endtime"type="datetime-local" name="endtime">
+
+    <ul>
+      <li ng-repeat="image in Images"> test{{image.timestamp}} <br></br>
+        <img ng-src="data:images/PNG;base64,{{image.data}}"></li>
+      </ul>
+
+      <button ng-click="getImages()">Get Images</button>
+    </form>
+    </body>
+```
