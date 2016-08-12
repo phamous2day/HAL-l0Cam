@@ -179,7 +179,7 @@ Sample timestamps to try:
 2016-08-09 18:02:24.311Z
 
 
-###3b. Using a "datepicker" to make time ranges more elegant
+###3c. Using a "datepicker" to make time ranges more elegant
 I wanted to use a fancy date time picker to specify the range since it's nearly impossible for users to input an exact timestamp like this format (from the top of their head): 2016-08-09 18:02:24.311Z
 
 After scouring the internet, seems like the general direction was to use "angular UI" ...but that's mostly for display and it's tough to $scope the input time from front end to backend. Then, I found this: [https://codepen.io/Sinetheta/pen/Ftjwi](https://codepen.io/Sinetheta/pen/Ftjwi) which looks really and had everything I needed ... but turns out it used jQuery, and I didn't want to get my code messier with assorted languages.
@@ -216,3 +216,13 @@ Final Date/Time Range code
     </form>
     </body>
 ```
+
+I also wanted to refine the search to pull just the timestamps rather than a bunch of data. Looking at MongoDB docs I found this snippet — the following operation finds documents in the bios collection and returns only the name field and the contribs field:
+:
+```mongo
+db.bios.find(
+   { },
+   { name: 1, contribs: 1, _id: 0 }
+)
+```
+
