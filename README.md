@@ -168,17 +168,6 @@ app.post('/images', function(request, response, next) {
     .then(function(images) {
 ```
 
-Sample timestamps to try:
-2016-08-09 17:54:51.857Z
-2016-08-09 18:00:18.577Z
-2016-08-09 18:01:59.276Z
-2016-08-09 18:02:04.359Z
-2016-08-09 18:02:09.313Z
-2016-08-09 18:02:14.317Z
-2016-08-09 18:02:19.349Z
-2016-08-09 18:02:24.311Z
-
-
 ###3c. Using a "datepicker" to make time ranges more elegant
 I wanted to use a fancy date time picker to specify the range since it's nearly impossible for users to input an exact timestamp like this format (from the top of their head): 2016-08-09 18:02:24.311Z
 
@@ -217,7 +206,7 @@ Final Date/Time Range code
     </body>
 ```
 
-I also wanted to refine the search to pull just the timestamps rather than a bunch of data. Looking at MongoDB docs I found this snippet — the following operation finds documents in the bios collection and returns only the name field and the contribs field:
+I also wanted to refine the search to pull just the timestamps rather than a bunch of data. Looking [at MongoDB docs](https://docs.mongodb.com/v3.0/reference/method/db.collection.find/) I found this snippet — the following operation finds documents in the bios collection and returns only the name field and the contribs field:
 :
 ```mongo
 db.bios.find(
