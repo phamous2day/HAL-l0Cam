@@ -195,7 +195,7 @@ In the end, I found a "datetime" drop down from W3 school, which looks like this
 </form>
 ```
 
-The issue here is that it uses that specific action_page.php, which I don't want to use. It's a simple fix, instead of telling it that action, I made the form do a: **form methods = "POST" ** 
+The issue here is that it uses that specific action_page.php, which I don't want to use. It's a simple fix, instead of telling it that action, I made the form do a: **form methods = "POST"** 
 
 Final Date/Time Range code
 ```html
