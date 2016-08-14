@@ -22,7 +22,7 @@ To capture the images say every 8 seconds, I used setInterval which looks like t
 ```javascript
 var i = 0;
 setInterval(function() {
-  request('http://192.168.1.112/tmpfs/auto.jpg').pipe(fs.createWriteStream('DCCam'+i+'.png'));
+  request('http://192.168.x.xxx/xxxx/camera.jpg').pipe(fs.createWriteStream('DCCam'+i+'.png'));
   i++;
 }, 8000);
 ```
