@@ -7,7 +7,7 @@ There were a lot of moving parts to this project. I figure the best approach is 
 
 ### Table of Contents
 **[1. Finding resources to work with](Finding-resources-to-work-with)** 
-**[3c. Using a "datepicker" to make time ranges more elegant](3c. Using a "datepicker" to make time ranges more elegant)** 
+**[3c. Using a "datepicker" to make time ranges more elegant](#3c. Using a "datepicker" to make time ranges more elegant)** 
 
 ###1. Finding resources to work with
 First issue was not having the right equipment (some IP cameras don't give me the necessaary information I need, e.g. FOSCam cameras didn't provide IP address or other ways to extract information. They were limited by their app). Eventually, I did find a website that has a "still image feed" here:
