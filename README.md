@@ -6,11 +6,11 @@ There were a lot of moving parts to this project. I figure the best approach is 
 
 
 ### Table of Contents
-*[1. Finding resources to work with](https://github.com/phamous2day/HAL-l0Cam#1-finding-resources-to-work-with)
-*[2. Uploading files to MongoDB](#2-uploading-files-to-mongodb)
-*[3a. Using AngularJS filter to display images based on timestamp](#3a-using-angularjs-filter-to-display-images-based-on-timestamp)
-*[3b. Filter images by timestamp: passing front end data to backend](#3b-filter-images-by-timestamp-passing-front-end-data-to-backend)
-*[3c. Using a "datepicker" to make time ranges more elegant](#3c-using-a-datepicker-to-make-time-ranges-more-elegant)
+* [1. Finding resources to work with](https://github.com/phamous2day/HAL-l0Cam#1-finding-resources-to-work-with)
+* [2. Uploading files to MongoDB](#2-uploading-files-to-mongodb)
+* [3a. Using AngularJS filter to display images based on timestamp](#3a-using-angularjs-filter-to-display-images-based-on-timestamp)
+* [3b. Filter images by timestamp: passing front end data to backend](#3b-filter-images-by-timestamp-passing-front-end-data-to-backend)
+* [3c. Using a "datepicker" to make time ranges more elegant](#3c-using-a-datepicker-to-make-time-ranges-more-elegant)
 
 
 
