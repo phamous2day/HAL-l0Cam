@@ -224,4 +224,40 @@ db.bios.find(
    { name: 1, contribs: 1, _id: 0 }
 )
 ```
+###4. Make a Record/Stop video: ng-switch and clearing the interval on the backend
+Because I'm capturing images using a setInterval(), I learned that there's a way to [stop it using clearInterval():](http://stackoverflow.com/questions/109086/stop-setinterval-call-in-javascript)
+
+The bettter but uglier way to stop it is to make "setInterval" to a global variable so that it can be passed to the clearInterval(globalvariablehere). It's ugly because global variables have a bad reputation for name collisons, but for the sake of this project, hakuna matata ;)
+
+Backend function to stop recording looks like this — after I made global variable CaptureImages = setInterval():
+```nodejs
+app.post('/stopRecord', function(request, response, next) {
+clearInterval(CaptureImages);
+});
+```
+
+Next up, I wanted to make a cool Start/Stop record button without making 2 separate buttons an learned how to accomplish this using [ng-switch like this](http://jsfiddle.net/uEbUD/):
+```js
+$scope.selected = true;
+$scope.button1 = function () {
+  //do logic for button 1
+  $scope.selected = !$scope.selected;
+  console.log('btn1 clicked');
+  console.log("$scope capture");
+  $http.post('/recordImages')
+  .success(function(data, status){
+  })
+  .error(function(status){
+    console.log("status is: " + status);
+  });
+};
+
+$scope.button2 = function () {
+  //do logic for button 2
+  $scope.selected = !$scope.selected;
+  console.log('btn2 clicked');
+  $http.post('/stopRecord');
+  console.log("Recording has stopped");
+};
+```
 
