@@ -230,7 +230,7 @@ Because I'm capturing images using a setInterval(), I learned that there's a way
 The bettter but uglier way to stop it is to make "setInterval" to a global variable so that it can be passed to the clearInterval(globalvariablehere). It's ugly because global variables have a bad reputation for name collisons, but for the sake of this project, hakuna matata ;)
 
 Backend function to stop recording looks like this — after I made global variable CaptureImages = setInterval():
-```nodejs
+```js
 app.post('/stopRecord', function(request, response, next) {
 clearInterval(CaptureImages);
 });
