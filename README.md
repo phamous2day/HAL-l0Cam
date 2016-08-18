@@ -287,13 +287,45 @@ var Image = mongoose.model('Image', {
 
 Had I combined it, it would make no sense because when users sign up, they don't have picture information. Plus, there are other limitations or craziness to think about. The amount of users would dwarf the amount of pictures. So, how would would I go about binding pictures exlusively to users? By authenticating a token which then uses routes to pass certain data (like username) to the image model.
 
-Put tabs between columns
-Compact mode
-Result (click "Generate" to refresh)
-Copy to clipboard
+Here's a sample **frontend js** that passes Timestamps exclusive to a user:
+```js
+app.controller('ImagesController', function ImagesController($scope, $http, $cookies) {
+  //the below to pull availableTimeStamps
+  $http.get(API+'/getTimestamps/'+$cookies.get('token')).then(function(timestamp)
+  {
+    // console.log("availableTimestamps data is ", timestamp);
+    $scope.availableTimestamps= timestamp;
+  },function(err)
+  {
+    console.log("ImagesController error is", err);
+  }
+);
+```
 
-| **Frontend js** ```js app.controller('ImagesController', function ImagesController($scope, $http, $cookies) {,//the below to pull availableTimeStamps,$http.get(API+'/getTimestamps/'+$cookies.get('token')).then(function(timestamp),{,// console.log("availableTimestamps data is ", timestamp);,$scope.availableTimestamps= timestamp;,},function(err),{,console.log("ImagesController error is", err);,}); ``` 	| **Backend js** ```js app.get('/getTimestamps/:token',authRequired, function(request, response, next) {,var user = request.user;,var images = request.params.images;,Image.find(,{user: user},,{ timestamp: 1},),.then(function(images) {,justTimestamps = images.map(function(image) {,return {,timestamp: image.timestamp,,};,});,response.json(justTimestamps);,}),.catch(function(error){,console.log(error);,next();,});,}); ``` 	|
-|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
+Here's the corresponding **backend js** that authenticates token, extracts the username, then pulls timestamp based on that:
+```js
+app.get('/getTimestamps/:token',authRequired, function(request, response, next) {
+    var user = request.user;
+    var images = request.params.images;
+    Image.find(
+      {user: user},
+      { timestamp: 1}
+    )
+    .then(function(images) {
+      justTimestamps = images.map(function(image) {
+        return {
+          timestamp: image.timestamp,
+        };
+      });
+
+      response.json(justTimestamps);
+    })
+    .catch(function(error){
+      console.log(error);
+      next();
+    });
+  });
+  ```
 
 
 
