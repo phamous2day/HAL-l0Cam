@@ -27,6 +27,8 @@ There were a lot of moving parts to this project. I figure the best approach is 
 * [3a. Using AngularJS filter to display images based on timestamp](#3a-using-angularjs-filter-to-display-images-based-on-timestamp)
 * [3b. Filter images by timestamp: passing front end data to backend](#3b-filter-images-by-timestamp-passing-front-end-data-to-backend)
 * [3c. Using a "datepicker" to make time ranges more elegant](#3c-using-a-datepicker-to-make-time-ranges-more-elegant)
+* [4. Make a Record/Stop video: ng-switch and clearing the interval on the backend](https://github.com/phamous2day/HAL-l0Cam/blob/master/README.md#4-make-a-recordstop-video-ng-switch-and-clearing-the-interval-on-the-backend)
+* [5. Request parameters and binding content exclusively to users](https://github.com/phamous2day/HAL-l0Cam/blob/master/README.md#5-request-parameters-and-binding-content-exclusively-to-users)
 
 
 
