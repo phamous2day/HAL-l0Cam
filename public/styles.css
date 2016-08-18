@@ -1,0 +1,60 @@
+.box { color: white; text-align: center; height: 100px; }
+.box-show-setup, .box-hide-setup {
+  -webkit-transition:all linear 0.3s;
+  -moz-transition:all linear 0.3s;
+  -ms-transition:all linear 0.3s;
+  -o-transition:all linear 0.3s;
+  transition:all linear 0.3s;
+}
+
+.box-show-setup { opacity:0; height: 0; }
+.box-show-setup.box-show-start { opacity:1; height: 100px; }
+
+.box-hide-setup { opacity:1; height: 0; }
+.box-hide-setup.box-hide-start { opacity:0; height: 100px; }
+/*end of timestamp menu*/
+
+
+
+
+.input-group-addon
+{
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+    color: rgb(255, 255, 255);
+}
+.form-control:focus
+{
+    background-color: rgb(50, 118, 177);
+    border-color: rgb(40, 94, 142);
+    color: rgb(255, 255, 255);
+}
+.form-signup input[type="text"],.form-signup input[type="password"] { border: 1px solid rgb(50, 118, 177); }
+/*end of login*/
+
+* {
+  padding: 5px;
+  box-sizing:
+  border-box;
+}
+nav ul{
+  background: black;
+  height:300px;
+  width:47%;
+  overflow:hidden;
+  overflow-y:scroll;}
+
+body{
+  background-image: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dimension.png");
+}
+
+
+li {
+  border-bottom: 1px solid white;
+}
+
+#fixed {
+    height: 400px;
+    overflow: auto;
+}
+/*end of everything else*/
