@@ -1,0 +1,34 @@
+{
+  "name": "HAL-l0 Cam",
+  "version": "1.0.0",
+  "description": "MEAN Stack security app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phamous2day/HAL-l0Cam.git"
+  },
+  "author": "phamous2day",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phamous2day/HAL-l0Cam/issues"
+  },
+  "homepage": "https://github.com/phamous2day/HAL-l0Cam#readme",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "body-parser": "^1.15.2",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.3",
+    "my-bcrypt": "^1.0.2",
+    "rand-token": "^0.2.1",
+    "request": "^2.74.0",
+    "stripe": "^4.7.0"
+  },
+  "engines": {
+    "node": "==4.4.5"
+  }
+}

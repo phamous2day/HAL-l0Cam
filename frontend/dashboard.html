@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-6 col-md-4">
+    <button class="btn btn-danger" ng-click="toggle = !toggle">Available Timestamps</button>
+    <div class="box on" ng-show="toggle" ng-animate="'box'">  <nav>
+      <ul>
+        <li ng-repeat="timestamp in availableTimestamps.data">
+          {{timestamp.timestamp | date:'yyyy-MM-dd HH:mm:ss'}}
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+
+
+<!-- Begin second column -->
+<div class="col-md-8">
+  <br>
+
+  <!-- Start/Stop record -->
+  <div ng-switch on="selected">
+    <button ng-switch-when='true' ng-click='button1()' class="btn btn-danger" >Start Recording</button>
+    <button ng-switch-when='false' ng-click='button2()'class="btn btn-secondary" >Stop Recording</button>
+  </div>
+
+<br>
+
+  <form methods= "POST">
+    Starting (date and time):
+    <input ng-model="starttime"type="datetime-local" name="startime">
+    <br>
+    Ending (date and time):
+    <input ng-model="endtime"type="datetime-local" name="endtime">
+<br>
+    <button class="btn btn-outline-danger" ng-click='getImages()'>Get Images</button>
+    <h3>Images will appear here </h3>
+  </form>
+
+
+
+
+
+
+  <div id="fixed" when-scrolled="loadMore()">
+    <ul>
+      <li class="col-lg-3 col-md-4 col-xs-6 thumb" id ="imageGallery" ng-repeat="image in Images"> {{image.timestamp | date:'yyyy-MM-dd HH:mm:ss'}} <br></br>
+        <img ng-src="data:images/PNG;base64,{{image.data}}" class="thumbnail img-responsive"></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- this next div ends bootstrap grid columns -->
+</div>

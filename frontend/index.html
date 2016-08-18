@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>HAL-l0 Cam</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="icon" type="image/ico" href="images/halCam.png" />
+  <link href="https://fonts.googleapis.com/css?family=Black+Ops+One" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="HAL-app" ng-controller="MainController">
+
+<div ng-controller="ImagesController">
+
+
+
+
+  <div class="container-fluid">
+    <div class="row logo" >
+      <div class="header">
+
+        <a href="index.html">
+          <img src="images/halCam.png">
+        </a>
+        <h1>HAL-l0 Cam</h1>
+      </div>
+      <div class="col col-md-12">
+
+
+
+        <a href="#/login"><button type="submit" class="btn userBtns" ng-show="userButton">Login</button></a>
+        <a href="#/signup"><button type="submit" class="btn userBtns" ng-show="userButton">New User?</button></a>
+        <!-- <h2 class="userBtns">Welcome, {{username}}!</h2> -->
+
+        <a><button ng-click="logout()" type="submit" class="btn userBtns" ng-hide="userButton">Logout</button></a>
+      </div>
+    </div>
+
+    <div class="row pages">
+      <div class="col col-sm-3 link">
+        <a href="#/"><p>HOME</p></a>
+      </div>
+      <div class="col col-sm-3 link">
+        <a href="#/dashboard"><p>DASHBOARD</p></a>
+      </div>
+    </div>
+
+    <!-- <div ng-show="displayMessage" class="row text-center display alert alert-warning">
+      {{displayMessage}}
+    </div> -->
+
+    <ng-view></ng-view>
+
+
+    <div class="row">
+      <div class="footer col col-md-12 text-center">
+        <p>made in space | copyright © 2016</p>
+      </div>
+    </div>
+</div>
+
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="js/angular-cookies.js"></script>
+  <script src="js/frontend.js"></script>
+
+<!-- This last div closes the ImagesController -------------------------->
+</div>
+</body>
+</html>

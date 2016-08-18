@@ -1,0 +1,31 @@
+<div class="container-fluid">
+
+  <form class="loginbox">
+    <h2>Signup</h2>
+    <p class="text-center">You will login again on next page</p>
+    <br>
+    <hr>
+    <div class="form-group">
+      <!-- Using email as a username -->
+      <label for="InputEmail1">Username:</label>
+      <input ng-model="username" type="text" class="form-control" id="InputEmail1" placeholder="Username">
+
+      <br>
+    </div>
+    <div class="form-group">
+      <label for="InputPassword1">Password:</label>
+      <input ng-model="password" type="password" class="form-control" id="InputPassword1" placeholder="Password">
+      <br>
+    </div>
+<br>
+    <div class="form-group">
+      <label for="InputURL">Img URL:</label>
+      <input ng-model="imgURL" type="text" class="form-control" id="InputURL" placeholder="http://imageurl.com">
+      <br>
+    </div>
+    <div class="submitBtn">
+      <button type="submit" class="btn" ng-click="signUp()">Submit</button>
+    </div>
+  </form>
+
+</div>
