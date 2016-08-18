@@ -1,11 +1,27 @@
 # ![cam icon](halCam.png)HAL-l0Cam
+##Overview of Project
+HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. Keep track of your pets or keep an eye on what's going on at your home. Originally named, Hello-cam, I thought it would be a fun pun on HAL from 2001 Space Odyssey —also, I get to have a mascot that strikes fear into bad guys. ~totally not creepy~
+
+##Technologies, Frameworks, and Programming Languages used
+* HTML, CSS, Javascript
+* AngularJS - frontend logic to push/pull data to backend
+* Node.js - to handle backend, plus use middleware
+* MongoDB - to store the images thanks to mlab.com
+
+##Project Screenshots
+
+##3 future contributions I'd like the community to add
+* A table/directory of supported cameras that have still image feeds
+* GridFS integration to handle videos (using this also allows for auto-deletion of old videos to accomodate memory savings)
+* Motion-detection integration for cameras
+
+##Check it out here
 
 
-##Obstacles:
+#Obstacles:
 There were a lot of moving parts to this project. I figure the best approach is to take it one milestone at a time.
 
-
-### Table of Contents
+###Table of Contents
 * [1. Finding resources to work with](https://github.com/phamous2day/HAL-l0Cam#1-finding-resources-to-work-with)
 * [2. Uploading files to MongoDB](#2-uploading-files-to-mongodb)
 * [3a. Using AngularJS filter to display images based on timestamp](#3a-using-angularjs-filter-to-display-images-based-on-timestamp)
