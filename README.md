@@ -1,14 +1,17 @@
-# ![cam icon](halCam.png)HAL-l0Cam
+# ![screenshots](halCam.png)HAL-l0Cam
 ##Overview of Project
 HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. Keep track of your pets or keep an eye on what's going on at your home. Originally named, Hello-cam, I thought it would be a fun pun on HAL from 2001 Space Odyssey —also, I get to have a mascot that strikes fear into bad guys. ~totally not creepy~
 
 ##Technologies, Frameworks, and Programming Languages used
-* HTML, CSS, Javascript
+* HTML, CSS, Javascript - main entrance to the project
 * AngularJS - frontend logic to push/pull data to backend
-* Node.js - to handle backend, plus use middleware
-* MongoDB - to store the images thanks to mlab.com
+* Node.js - to handle backend, plus use middleware — functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle
+* MongoDB - to store the images to external database; thanks to mlab.com!
 
 ##Project Screenshots
+![screenshots](home.png)
+![screenshots](signup.png)
+![screenshots](dashboard.png)
 
 ##3 future contributions I'd like the community to add
 * A table/directory of supported cameras that have still image feeds
@@ -33,6 +36,7 @@ There were a lot of moving parts to this project. I figure the best approach is 
 
 
 ###1. Finding resources to work with
+![screenshots](equipment.jpg)
 First issue was not having the right equipment (some IP cameras don't give me the necessaary information I need, e.g. FOSCam cameras didn't provide IP address or other ways to extract information. They were limited by their app). Eventually, I did find a website that has a "still image feed" here:
 https://www.cedarpoint.com/online-fun/live-video-cam
 
@@ -47,6 +51,8 @@ setInterval(function() {
 
 ###2. Uploading files to MongoDB
 On my research, I learned about [GridFS](http://excellencenodejsblog.com/gridfs-using-mongoose-nodejs/). To summarize as files are uploaded they are split into 2 chunks: one to store metadata the other to store the files as a "chunk." With the limitation of how much memory I have in the database, I realize to do a videostream would take up too much memory. So, I opted for still images instead, leading me to ditch GridFS.
+![screenshots](caughtImages.png)
+
 
 When images are stored to something like MongoDB, they aren't stored as actual images. Instead, they're stored as either binary or "buffers." To convert the buffers to images on the front end, it'll invole 'base64':
 
@@ -151,6 +157,7 @@ db.getCollection('images').find({
 ```
 
 ###3b. Filter images by timestamp: passing front end data to backend.
+![screenshots](firstfilter.png)
 Components include: build a form to take in start and end time, apply "ng-model" to both times to get the values independently, then $scope the values to the frontend js, then pass those values to the backend server.js
 
 ```html
@@ -345,5 +352,8 @@ app.get('/getTimestamps/:token',authRequired, function(request, response, next) 
   });
   ```
 
+#Closing thoughts
+It's an oversimplication to say this, but I learned a lot from this project and from DigitalCrafts overall. Having a project like this with so many moving pieces reaffirms the material I've learned these past months. Whether if it's reviewing basic AngularJS binding or directives to doing fancier routes with Node.js (passing tokens in $http.get API calls), this was a great final project to end my coding-bootcamp journey.
 
+Special thanks to my trainer, Toby,[@airportyh](https://github.com/airportyh) who kept the "you can do it, nothing is too difficult" spirit with me all the way. Especially since this final project dealt with material that went beyond the curriculum: hardware, networks, videography image buffers. I'm very grateful to have such well-rounded expertise throughout my development. Thank you and hope you enjoy my thoughts!
 
