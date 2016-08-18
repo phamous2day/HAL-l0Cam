@@ -261,3 +261,52 @@ $scope.button2 = function () {
 };
 ```
 
+###5. Request parameters and binding content exclusively to users
+With this project, I had a lot of sandboxed environments separating each functionality to make sure it work independently before merging. When it came to consolidating all the code, I was tempted to leave the js files separate and just reference them in the index.html them ... but that gets pretty messy as I illustrate a scenario:
+
+Let's think of the following use case: When users sign up to my website, their credentials get stored in a model (username, password, a token for a session, etc.). When users actually record images, that information gets stored in a separate model. Why note make everything stored in one model for thes sake of efficiency? Well, that's when things can get messy:
+
+I have a mongoose model that holds user information like this:
+```js
+var User = mongoose.model('User', {
+  _id: { type: String, required: true },
+  password: { type: String, required: true },
+  imgURL: { type: String, required: true },
+  authenticationTokens: [{ token: String, expiration: Date }],
+});
+```
+
+Then I have a separate module for images like this:
+```js
+var Image = mongoose.model('Image', {
+  user: String,
+  data: Buffer,
+  timestamp: { type: Date, default: Date.now }
+});
+```
+
+Had I combined it, it would make no sense because when users sign up, they don't have picture information. Plus, there are other limitations or craziness to think about. The amount of users would dwarf the amount of pictures. So, how would would I go about binding pictures exlusively to users? By authenticating a token which then uses routes to pass certain data (like username) to the image model.
+
+
+app.get('/getTimestamps/:token',authRequired, function(request, response, next) {
+    var user = request.user;
+    var images = request.params.images;
+    Image.find(
+      {user: user},
+      { timestamp: 1}
+    )
+    .then(function(images) {
+      justTimestamps = images.map(function(image) {
+        return {
+          timestamp: image.timestamp,
+        };
+      });
+
+      response.json(justTimestamps);
+    })
+    .catch(function(error){
+      console.log(error);
+      next();
+    });
+  });
+
