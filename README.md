@@ -15,7 +15,7 @@ HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. 
 
 ##3 future contributions I'd like the community to add
 * A table/directory of supported cameras that have still image feeds
-* GridFS integration to handle videos (using this also allows for auto-deletion of old videos to accomodate memory savings)
+* GridFS integration to handle videos (using this also allows for auto-deletion of old videos to accommodate memory savings)
 * Motion-detection integration for cameras
 
 ##Check it out here
@@ -37,7 +37,7 @@ There were a lot of moving parts to this project. I figure the best approach is 
 
 ###1. Finding resources to work with
 ![screenshot](screenshots/equipment.jpg)
-First issue was not having the right equipment (some IP cameras don't give me the necessaary information I need, e.g. FOSCam cameras didn't provide IP address or other ways to extract information. They were limited by their app). Eventually, I did find a website that has a "still image feed" here:
+First issue was not having the right equipment (some IP cameras don't give me the necessary information I need, e.g. FOSCam cameras didn't provide IP address or other ways to extract information. They were limited by their app). Eventually, I did find a website that has a "still image feed" here:
 https://www.cedarpoint.com/online-fun/live-video-cam
 
 To capture the images say every 8 seconds, I used setInterval which looks like this:
@@ -55,7 +55,7 @@ On my research, I learned about [GridFS](http://excellencenodejsblog.com/gridfs-
 ![screenshots](screenshots/caughtImages.png)
 
 
-When images are stored to something like MongoDB, they aren't stored as actual images. Instead, they're stored as either binary or "buffers." To convert the buffers to images on the front end, it'll invole 'base64':
+When images are stored to something like MongoDB, they aren't stored as actual images. Instead, they're stored as either binary or "buffers." To convert the buffers to images on the front end, it'll involve 'base64':
 
 **Backend**
 ```javascript
@@ -145,7 +145,7 @@ function MainController($scope, $http) {
   });
 }
 ```
-I'm going to the timestamp based on user input. I'm not using a static array of predefined values to be looped through, since I already hav that made with the $scope.Images which stores a buffer of images I stored in my database.
+I'm going to the timestamp based on user input. I'm not using a static array of predefined values to be looped through, since I already have that made with the $scope.Images which stores a buffer of images I stored in my database.
 
 Note to self: What mongodb query looks like to get between dates -
 ```js
@@ -255,7 +255,7 @@ db.bios.find(
 ###4. Make a Record/Stop video: ng-switch and clearing the interval on the backend
 Because I'm capturing images using a setInterval(), I learned that there's a way to [stop it using clearInterval():](http://stackoverflow.com/questions/109086/stop-setinterval-call-in-javascript)
 
-The bettter but uglier way to stop it is to make "setInterval" to a global variable so that it can be passed to the clearInterval(globalvariablehere). It's ugly because global variables have a bad reputation for name collisons, but for the sake of this project, hakuna matata ;)
+The better but uglier way to stop it is to make "setInterval" to a global variable so that it can be passed to the clearInterval(globalvariablehere). It's ugly because global variables have a bad reputation for name collisions, but for the sake of this project, hakuna matata ;)
 
 Backend function to stop recording looks like this — after I made global variable CaptureImages = setInterval():
 ```js
@@ -292,7 +292,7 @@ $scope.button2 = function () {
 ###5. Request parameters and binding content exclusively to users
 With this project, I had a lot of sandboxed environments separating each functionality to make sure it work independently before merging. When it came to consolidating all the code, I was tempted to leave the js files separate and just reference them in the index.html them ... but that gets pretty messy as I illustrate a scenario:
 
-Let's think of the following use case: When users sign up to my website, their credentials get stored in a model (username, password, a token for a session, etc.). When users actually record images, that information gets stored in a separate model. Why note make everything stored in one model for thes sake of efficiency? Well, that's when things can get messy:
+Let's think of the following use case: When users sign up to my website, their credentials get stored in a model (username, password, a token for a session, etc.). When users actually record images, that information gets stored in a separate model. Why note make everything stored in one model for the sake of efficiency? Well, that's when things can get messy:
 
 I have a mongoose model that holds user information like this:
 ```js
@@ -313,7 +313,7 @@ var Image = mongoose.model('Image', {
 });
 ```
 
-Had I combined it, it would make no sense because when users sign up, they don't have picture information. Plus, there are other limitations or craziness to think about. The amount of users would dwarf the amount of pictures. So, how would would I go about binding pictures exlusively to users? By authenticating a token which then uses routes to pass certain data (like username) to the image model.
+Had I combined it, it would make no sense because when users sign up, they don't have picture information. Plus, there are other limitations or craziness to think about. The amount of users would dwarf the amount of pictures. So, how would would I go about binding pictures exclusively to users? By authenticating a token which then uses routes to pass certain data (like username) to the image model.
 
 Here's a sample **frontend js** that passes Timestamps exclusive to a user:
 ```js
@@ -356,7 +356,10 @@ app.get('/getTimestamps/:token',authRequired, function(request, response, next) 
   ```
 
 #Closing thoughts
-It's an oversimplication to say this, but I learned a lot from this project and from DigitalCrafts overall. Having a project like this with so many moving pieces reaffirms the material I've learned these past months. Whether if it's reviewing basic AngularJS binding or directives to doing fancier routes with Node.js (passing tokens in $http.get API calls), this was a great final project to end my coding-bootcamp journey.
+It's an oversimplification to say this, but I learned a lot from this project and from DigitalCrafts overall. Having a project like this with so many moving pieces reaffirms the material I've learned these past months. Whether if it's reviewing basic AngularJS binding or directives to doing fancier routes with Node.js (passing tokens in $http.get API calls), this was a great final project to end my coding-bootcamp journey.
 
-Special thanks to my trainer, Toby,[@airportyh](https://github.com/airportyh) who kept the "you can do it, nothing is too difficult" spirit with me all the way. Especially since this final project dealt with material that went beyond the curriculum: hardware, networks, videography image buffers. I'm very grateful to have such well-rounded expertise throughout my development. Thank you and hope you enjoy my thoughts!
+Special thanks to my instructor, Toby,[@airportyh](https://github.com/airportyh) who kept the "you can do it, nothing is too difficult" spirit with me all the way. Especially since this final project dealt with material that went beyond the curriculum: hardware, networks, videography image buffers. wkwyatt
+Special thanks also to the developer-in-residence, Will,[@wkwyatt](https://github.com/wkwyatt) for giving me the "pushes" necessary to steer me away from endless rabbit holes. He's like my metaphorical Mickey Goldmill from "Rocky."
+
+I'm very grateful to have such well-rounded expertise throughout my development. Thank you and hope you enjoy my thoughts!
 
