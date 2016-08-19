@@ -18,7 +18,9 @@ HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. 
 * GridFS integration to handle videos (using this also allows for auto-deletion of old videos to accommodate memory savings)
 * Motion-detection integration for cameras
 
-##Check it out here
+####Check it out here: 
+http://hal-l0cam.surge.sh/#/
+3 example still image feed urls can be found here: https://www.cedarpoint.com/hours-directions
 
 
 #Obstacles:
