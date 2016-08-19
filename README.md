@@ -1,5 +1,7 @@
 # ![screenshot](screenshots/halCam.png)HAL-l0Cam
-![screenshot](screenshots/home.png)](https://vimeo.com/179487460 "HAL-l0 Cam in action - Click to Watch!")
+
+
+[![screenshot](screenshots/home.png)](https://vimeo.com/179487460 "HAL-l0 Cam in action - Click to Watch!")
 
 ##Overview of Project
 HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. Keep track of your pets or keep an eye on what's going on at your home. Originally named, Hello-cam, I thought it would be a fun pun on HAL from 2001 Space Odyssey —also, I get to have a mascot that strikes fear into bad guys. ~totally not creepy~
