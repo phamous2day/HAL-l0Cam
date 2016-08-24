@@ -23,6 +23,7 @@ HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. 
 
 ####Check it out here: 
 http://hal-l0cam.surge.sh/#/
+**Note for now the frontend works. Need to redeploy the backend using either heroku or AWS ... please bear with the construction.
 
 3 example still image feed urls can be found here: https://www.cedarpoint.com/online-fun/live-video-cam
 
