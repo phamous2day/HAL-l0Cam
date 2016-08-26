@@ -23,7 +23,11 @@ HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. 
 
 ####Check it out here: 
 http://hal-l0cam.surge.sh/#/
-**Note for now the frontend works. Need to redeploy the backend using either heroku or AWS ... please bear with the construction.
+**Tried deploying app through heroku, found couple of things to note: need to use heroku addon "mlab", use their URI scheme like [this](https://scotch.io/tutorials/use-mongodb-with-a-node-application-on-heroku), then make generate an SSH key, then make [buildpack](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs). Despite the deployment being successful, I still face an "application error." I suspect may may have to do with:
+
+```js
+process.env.PORT 
+```
 
 3 example still image feed urls can be found here: https://www.cedarpoint.com/online-fun/live-video-cam
 
