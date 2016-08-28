@@ -13,6 +13,7 @@ HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. 
 * MongoDB - to store the images to external database; thanks to mlab.com!
 
 ##Project Screenshots
+![screenshot](screenshots/home.png)
 ![screenshot](screenshots/signup.png)
 ![screenshot](screenshots/dashboard.png)
 
