@@ -4,7 +4,7 @@
 	"description": "MEAN Stack security app",
 	"main": "backend.js",
 	"scripts": {
-		"start": "node index.js",
+		"start": "node backend.js",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -25,10 +25,10 @@
 		"mongoose": "^4.5.3",
 		"my-bcrypt": "^1.0.2",
 		"rand-token": "^0.2.1",
-		"request": "^2.74.0",
-		"stripe": "^4.7.0"
+		"request": "^2.74.0"
 	},
 	"engines": {
-		"node": "==6.0.0"
+		"node": "6.5.0",
+		"npm": "~3.10.3"
 	}
 }
