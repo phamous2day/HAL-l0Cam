@@ -66,7 +66,7 @@ On my research, I learned about [GridFS](http://excellencenodejsblog.com/gridfs-
 ![screenshots](screenshots/caughtImages.png)
 
 
-When images are stored to something like MongoDB, they aren't stored as actual images. Instead, they're stored as either binary or "buffers." To convert the buffers to images on the front end, it'll involve 'base64':
+When images are stored to something like MongoDB, they aren't stored as actual images. Instead, they're stored as either binary or "buffers." To convert the buffers to images on the frontend, it'll involve 'base64':
 
 **Backend**
 ```javascript
@@ -91,6 +91,7 @@ IMPORTANT: when working with base64 conversion, you'll encounter errors in the b
 *from https://docs.angularjs.org/api/ng/provider/$compileProvider
 
 With the way my code was written, I had to chop some things out to make it less specific. I made the parameter below match up to exclusively the image instead of factoring other possible parameters like links.
+
 **Frontend: AngularJS**
 ```javascript
 app.config(function($compileProvider){
@@ -103,7 +104,7 @@ app.config(function($compileProvider){
 
 >Any url about to be assigned to img[src] via data-binding is first normalized and turned into an absolute url. Afterwards, the url is matched against the imgSrcSanitizationWhitelist regular expression. If a match is found, the original url is written into the dom. Otherwise, the absolute url is prefixed with 'unsafe:' string and only then is it written into the DOM.
 
-For more information on [Base-64 encoding images in Node.js visit](http://nodeexamples.com/2012/09/26/base-64-encoding-images-in-node-js/)
+For more information on [Base-64 encoding images in Node.js click this](http://nodeexamples.com/2012/09/26/base-64-encoding-images-in-node-js/)
 
 
 ###3a. Using AngularJS filter to display images based on timestamp
@@ -303,7 +304,7 @@ $scope.button2 = function () {
 ###5. Request parameters and binding content exclusively to users
 With this project, I had a lot of sandboxed environments separating each functionality to make sure it work independently before merging. When it came to consolidating all the code, I was tempted to leave the js files separate and just reference them in the index.html them ... but that gets pretty messy as I illustrate a scenario:
 
-Let's think of the following use case: When users sign up to my website, their credentials get stored in a model (username, password, a token for a session, etc.). When users actually record images, that information gets stored in a separate model. Why note make everything stored in one model for the sake of efficiency? Well, that's when things can get messy:
+Let's think of the following use case: When users sign up to my website, their credentials get stored in a model (username, password, a token for a session, etc.). When users actually record images, that information gets stored in a separate model. Why not make everything stored in one model for the sake of efficiency? Well, that's when things can get messy:
 
 I have a mongoose model that holds user information like this:
 ```js
