@@ -24,6 +24,12 @@ HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. 
 
 ####Check it out here: 
 http://hal-l0cam.surge.sh/#/
+
+*Sample credentials:*
+Username: 999
+
+Password: 999
+
 **Tried deploying app through heroku, found couple of things to note: need to use heroku addon "mlab", use their URI scheme like [this](https://scotch.io/tutorials/use-mongodb-with-a-node-application-on-heroku), then make generate an SSH key, then make [buildpack](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs). Despite the deployment being successful, I still face an "application error."
 
 **Edit: 9/1 - found that with Herok's free plan I can only deploy one functional app at a time, and I thought I had to use 2 dynamo's for front/backend. But, they only need to use 'port80' for deployment. 
