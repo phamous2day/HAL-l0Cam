@@ -26,9 +26,9 @@ HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. 
 http://hal-l0cam.surge.sh/#/
 
 *Sample credentials:*
-Username: 999
+Username: switchyard
 
-Password: 999
+Password: 123
 
 **Tried deploying app through heroku, found couple of things to note: need to use heroku addon "mlab", use their URI scheme like [this](https://scotch.io/tutorials/use-mongodb-with-a-node-application-on-heroku), then make generate an SSH key, then make [buildpack](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs). Despite the deployment being successful, I still face an "application error."
 
