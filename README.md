@@ -30,6 +30,12 @@ Username: switchyard
 
 Password: 123
 
+
+####Sidenotes: 
+**If downloading the project and looking to run the app locally, be sure to do the following to prevent CORS issues:
+1. Use cmd "serve" on the frontend folder to host the files locally on localhost:3000
+2. Use cmd "node" or "node-dev" -p9000 on the backend.js file as a way to run the backend files on a separate server.
+
 **Tried deploying app through heroku, found couple of things to note: need to use heroku addon "mlab", use their URI scheme like [this](https://scotch.io/tutorials/use-mongodb-with-a-node-application-on-heroku), then make generate an SSH key, then make [buildpack](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs). Despite the deployment being successful, I still face an "application error."
 
 **Edit: 9/1 - found that with Herok's free plan I can only deploy one functional app at a time, and I thought I had to use 2 dynamo's for front/backend. But, they only need to use 'port80' for deployment. 
