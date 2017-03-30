@@ -1,28 +1,45 @@
 # ![screenshot](screenshots/halCam.png)HAL-l0Cam
 
 
-[![screenshot](screenshots/home.png)](https://vimeo.com/179487460 "HAL-l0 Cam in action - Click to Watch!")
+[![screenshot](screenshots/hal.gif)](https://vimeo.com/179487460 "HAL-l0 Cam in action - Click to Watch!")
 
-##Overview of Project
+## Overview of Project
 HAL-l0 Cam is minimalistic portal to store your still image feeds from cameras. Keep track of your pets or keep an eye on what's going on at your home. Originally named, Hello-cam, I thought it would be a fun pun on HAL from 2001 Space Odyssey —also, I get to have a mascot that strikes fear into bad guys. ~totally not creepy~
 
-##Technologies, Frameworks, and Programming Languages used
+## Technologies, Frameworks, and Programming Languages used
 * HTML, CSS, Javascript - main entrance to the project
 * AngularJS - frontend logic to push/pull data to backend
 * Node.js - to handle backend, plus use middleware — functions that have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle
 * MongoDB - to store the images to external database; thanks to mlab.com!
 
-##Project Screenshots
+## Project Screenshots
+![screenshot](screenshots/home.png)
 ![screenshot](screenshots/signup.png)
 ![screenshot](screenshots/dashboard.png)
 
-##3 future contributions I'd like the community to add
+## 3 future contributions I'd like the community to add
 * A table/directory of supported cameras that have still image feeds
 * GridFS integration to handle videos (using this also allows for auto-deletion of old videos to accommodate memory savings)
 * Motion-detection integration for cameras
 
-####Check it out here: 
+#### Check it out here: 
 http://hal-l0cam.surge.sh/#/
+
+*Sample credentials:*
+Username: switchyard
+
+Password: 123
+
+
+#### Sidenotes: 
+**If downloading the project and looking to run the app locally, be sure to do the following to prevent CORS issues:
+1. Use cmd "serve" on the frontend folder to host the files locally on localhost:3000
+2. Use cmd "node" or "node-dev" -p9000 on the backend.js file as a way to run the backend files on a separate server.
+
+**Tried deploying app through heroku, found couple of things to note: need to use heroku addon "mlab", use their URI scheme like [this](https://scotch.io/tutorials/use-mongodb-with-a-node-application-on-heroku), then make generate an SSH key, then make [buildpack](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-nodejs). Despite the deployment being successful, I still face an "application error."
+
+**Edit: 9/1 - found that with Herok's free plan I can only deploy one functional app at a time, and I thought I had to use 2 dynamo's for front/backend. But, they only need to use 'port80' for deployment. 
+
 
 3 example still image feed urls can be found here: https://www.cedarpoint.com/online-fun/live-video-cam
 
@@ -30,7 +47,7 @@ http://hal-l0cam.surge.sh/#/
 #Obstacles:
 There were a lot of moving parts to this project. I figure the best approach is to take it one milestone at a time.
 
-###Table of Contents
+### Table of Contents
 * [1. Finding resources to work with](https://github.com/phamous2day/HAL-l0Cam#1-finding-resources-to-work-with)
 * [2. Uploading files to MongoDB](#2-uploading-files-to-mongodb)
 * [3a. Using AngularJS filter to display images based on timestamp](#3a-using-angularjs-filter-to-display-images-based-on-timestamp)
@@ -41,7 +58,7 @@ There were a lot of moving parts to this project. I figure the best approach is 
 
 
 
-###1. Finding resources to work with
+### 1. Finding resources to work with
 ![screenshot](screenshots/equipment.jpg)
 First issue was not having the right equipment (some IP cameras don't give me the necessary information I need, e.g. FOSCam cameras didn't provide IP address or other ways to extract information. They were limited by their app). Eventually, I did find a website that has a "still image feed" here:
 https://www.cedarpoint.com/online-fun/live-video-cam
@@ -55,13 +72,13 @@ setInterval(function() {
 }, 8000);
 ```
 
-###2. Uploading files to MongoDB
+### 2. Uploading files to MongoDB
 On my research, I learned about [GridFS](http://excellencenodejsblog.com/gridfs-using-mongoose-nodejs/). To summarize as files are uploaded they are split into 2 chunks: one to store metadata the other to store the files as a "chunk." With the limitation of how much memory I have in the database, I realize to do a videostream would take up too much memory. So, I opted for still images instead, leading me to ditch GridFS.
 
 ![screenshots](screenshots/caughtImages.png)
 
 
-When images are stored to something like MongoDB, they aren't stored as actual images. Instead, they're stored as either binary or "buffers." To convert the buffers to images on the front end, it'll involve 'base64':
+When images are stored to something like MongoDB, they aren't stored as actual images. Instead, they're stored as either binary or "buffers." To convert the buffers to images on the frontend, it'll involve 'base64':
 
 **Backend**
 ```javascript
@@ -86,6 +103,7 @@ IMPORTANT: when working with base64 conversion, you'll encounter errors in the b
 *from https://docs.angularjs.org/api/ng/provider/$compileProvider
 
 With the way my code was written, I had to chop some things out to make it less specific. I made the parameter below match up to exclusively the image instead of factoring other possible parameters like links.
+
 **Frontend: AngularJS**
 ```javascript
 app.config(function($compileProvider){
@@ -98,10 +116,10 @@ app.config(function($compileProvider){
 
 >Any url about to be assigned to img[src] via data-binding is first normalized and turned into an absolute url. Afterwards, the url is matched against the imgSrcSanitizationWhitelist regular expression. If a match is found, the original url is written into the dom. Otherwise, the absolute url is prefixed with 'unsafe:' string and only then is it written into the DOM.
 
-For more information on [Base-64 encoding images in Node.js visit](http://nodeexamples.com/2012/09/26/base-64-encoding-images-in-node-js/)
+For more information on [Base-64 encoding images in Node.js click this](http://nodeexamples.com/2012/09/26/base-64-encoding-images-in-node-js/)
 
 
-###3a. Using AngularJS filter to display images based on timestamp
+### 3a. Using AngularJS filter to display images based on timestamp
 Not having much practice with Date filters (especially since I don't want it to pull everything that comes with it, but rather, a shortened "timestamp" filter which I would have to make), I found a sampling of [how it looks here](http://plnkr.co/edit/vxIewUDGDjiz80W1Itag?p=preview):
 
 Here's what they have:
@@ -163,7 +181,7 @@ db.getCollection('images').find({
 })
 ```
 
-###3b. Filter images by timestamp: passing front end data to backend.
+### 3b. Filter images by timestamp: passing front end data to backend.
 
 ![screenshot](screenshots/firstFilter.png)
 
@@ -212,7 +230,7 @@ app.post('/images', function(request, response, next) {
     .then(function(images) {
 ```
 
-###3c. Using a "datepicker" to make time ranges more elegant
+### 3c. Using a "datepicker" to make time ranges more elegant
 I wanted to use a fancy date time picker to specify the range since it's nearly impossible for users to input an exact timestamp like this format (from the top of their head): 2016-08-09 18:02:24.311Z
 
 After scouring the internet, seems like the general direction was to use "angular UI" ...but that's mostly for display and it's tough to $scope the input time from front end to backend. Then, I found this: [https://codepen.io/Sinetheta/pen/Ftjwi](https://codepen.io/Sinetheta/pen/Ftjwi) which looks really and had everything I needed ... but turns out it used jQuery, and I didn't want to get my code messier with assorted languages.
@@ -258,7 +276,7 @@ db.bios.find(
    { name: 1, contribs: 1, _id: 0 }
 )
 ```
-###4. Make a Record/Stop video: ng-switch and clearing the interval on the backend
+### 4. Make a Record/Stop video: ng-switch and clearing the interval on the backend
 Because I'm capturing images using a setInterval(), I learned that there's a way to [stop it using clearInterval():](http://stackoverflow.com/questions/109086/stop-setinterval-call-in-javascript)
 
 The better but uglier way to stop it is to make "setInterval" to a global variable so that it can be passed to the clearInterval(globalvariablehere). It's ugly because global variables have a bad reputation for name collisions, but for the sake of this project, hakuna matata ;)
@@ -295,10 +313,10 @@ $scope.button2 = function () {
 };
 ```
 
-###5. Request parameters and binding content exclusively to users
+### 5. Request parameters and binding content exclusively to users
 With this project, I had a lot of sandboxed environments separating each functionality to make sure it work independently before merging. When it came to consolidating all the code, I was tempted to leave the js files separate and just reference them in the index.html them ... but that gets pretty messy as I illustrate a scenario:
 
-Let's think of the following use case: When users sign up to my website, their credentials get stored in a model (username, password, a token for a session, etc.). When users actually record images, that information gets stored in a separate model. Why note make everything stored in one model for the sake of efficiency? Well, that's when things can get messy:
+Let's think of the following use case: When users sign up to my website, their credentials get stored in a model (username, password, a token for a session, etc.). When users actually record images, that information gets stored in a separate model. Why not make everything stored in one model for the sake of efficiency? Well, that's when things can get messy:
 
 I have a mongoose model that holds user information like this:
 ```js
@@ -361,11 +379,10 @@ app.get('/getTimestamps/:token',authRequired, function(request, response, next) 
   });
   ```
 
-#Closing thoughts
+# Closing thoughts
 It's an oversimplification to say this, but I learned a lot from this project and from DigitalCrafts overall. Having a project like this with so many moving pieces reaffirms the material I've learned these past months. Whether if it's reviewing basic AngularJS binding or directives to doing fancier routes with Node.js (passing tokens in $http.get API calls), this was a great final project to end my coding-bootcamp journey.
 
-Special thanks to my instructor, Toby,[@airportyh](https://github.com/airportyh) who kept the "you can do it, nothing is too difficult" spirit with me all the way. Especially since this final project dealt with material that went beyond the curriculum: hardware, networks, videography image buffers. wkwyatt
-Special thanks also to the developer-in-residence, Will,[@wkwyatt](https://github.com/wkwyatt) for giving me the "pushes" necessary to steer me away from endless rabbit holes. He's like my metaphorical Mickey Goldmill from "Rocky."
+Special thanks to my instructor, [Toby,](https://github.com/airportyh) who kept the "you can do it, nothing is too difficult" spirit with me all the way. Especially since this final project dealt with material that went beyond the curriculum: hardware, networks, videography image buffers. 
+Special thanks also to the developer-in-residence, [Will,](https://github.com/wkwyatt) for giving me the "pushes" necessary to steer me away from endless rabbit holes. He's like my metaphorical Mickey Goldmill from "Rocky."
 
 I'm very grateful to have such well-rounded expertise throughout my development. Thank you and hope you enjoy my thoughts!
-
