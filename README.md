@@ -72,7 +72,7 @@ setInterval(function() {
 }, 8000);
 ```
 
-###2. Uploading files to MongoDB
+### 2. Uploading files to MongoDB
 On my research, I learned about [GridFS](http://excellencenodejsblog.com/gridfs-using-mongoose-nodejs/). To summarize as files are uploaded they are split into 2 chunks: one to store metadata the other to store the files as a "chunk." With the limitation of how much memory I have in the database, I realize to do a videostream would take up too much memory. So, I opted for still images instead, leading me to ditch GridFS.
 
 ![screenshots](screenshots/caughtImages.png)
