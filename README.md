@@ -28,7 +28,8 @@ http://hal-l0cam.surge.sh/#/
 *Sample credentials:*
 
 > Username: switchyard
-> Password: 123
+
+>Password: 123
 
 
 #### Sidenotes: 
