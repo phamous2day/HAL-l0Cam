@@ -42,9 +42,10 @@ http://hal-l0cam.surge.sh/#/
 
 ** Edit: 9/1 - found that with Herok's free plan I can only deploy one functional app at a time, and I thought I had to use 2 dynamo's for front/backend. But, they only need to use 'port80' for deployment. 
 
-
 3 example still image feed urls can be found here: https://www.cedarpoint.com/online-fun/live-video-cam
----
+
+
+
 
 # Obstacles:
 There were a lot of moving parts to this project. I figure the best approach is to take it one milestone at a time.
